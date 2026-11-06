@@ -1,0 +1,20 @@
+market_feed.import:
+  path: '/api/market-feed/import'
+  defaults:
+    _controller: '\Drupal\market_feed\Controller\ImportController::import'
+  methods: [POST]
+  requirements:
+    _permission: 'import market feed'
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: ['basic_auth']
+    no_cache: TRUE
+
+market_feed.page:
+  path: '/market-feed'
+  defaults:
+    _controller: '\Drupal\market_feed\Controller\MarketFeedController::page'
+    _title: 'Market Feed'
+  requirements:
+    _permission: 'view market feed'
+  methods: [GET]

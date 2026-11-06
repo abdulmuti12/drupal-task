@@ -1,0 +1,7 @@
+[
+  {"symbol": "AAPL", "price": 233.0, "change": -0.35, "volume": 51500000},
+  {"symbol": "INVALID!", "price": 1.0, "change": 0, "volume": 1},
+  {"symbol": "MSFT", "price": -5, "change": 1, "volume": 2},
+  {"symbol": "GOOG", "price": 167.125, "change": 1.005, "volume": 9000},
+  {"symbol": "AAPL", "price": 233.5, "change": 0.15, "volume": 51550000}
+]

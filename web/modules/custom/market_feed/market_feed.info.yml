@@ -1,0 +1,7 @@
+name: 'Market Feed'
+type: module
+description: 'Secure, batched market-price import and cache-aware display.'
+package: Custom
+core_version_requirement: '^10 || ^11'
+dependencies:
+  - drupal:basic_auth

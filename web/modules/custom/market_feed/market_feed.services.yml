@@ -1,0 +1,15 @@
+parameters:
+  market_feed.batch_size: 150
+
+services:
+  market_feed.importer:
+    class: Drupal\market_feed\Service\MarketFeedImporter
+    arguments:
+      - '@database'
+      - '@cache_tags.invalidator'
+      - '@datetime.time'
+      - '%market_feed.batch_size%'
+
+  logger.channel.market_feed:
+    parent: logger.channel_base
+    arguments: ['market_feed']

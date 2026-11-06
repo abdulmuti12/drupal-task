@@ -1,0 +1,5 @@
+[
+  {"symbol": "AAPL", "price": 232.15, "change": -1.20, "volume": 51230000},
+  {"symbol": "MSFT", "price": 415.60, "change": 3.45, "volume": 22150000},
+  {"symbol": "AAPL", "price": 233.00, "change": -0.35, "volume": 51500000}
+]

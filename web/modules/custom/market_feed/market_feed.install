@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the Market Feed module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function market_feed_schema(): array {
+  $schema['market_feed_prices'] = [
+    'description' => 'Latest observed price per normalized market symbol.',
+    'fields' => [
+      'symbol' => [
+        'description' => 'Uppercase unique ticker symbol.',
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+      ],
+      'price' => [
+        'description' => 'Latest price with four fractional digits.',
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 4,
+        'not null' => TRUE,
+      ],
+      'change_amount' => [
+        'description' => 'Signed change from reference price.',
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 4,
+        'not null' => TRUE,
+      ],
+      'volume' => [
+        'description' => 'Non-negative integer trading volume.',
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+      ],
+      'updated_at' => [
+        'description' => 'Server import timestamp, Unix seconds.',
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['symbol'],
+    'indexes' => [
+      'updated_at' => ['updated_at'],
+    ],
+  ];
+
+  return $schema;
+}

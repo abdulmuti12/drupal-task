@@ -1,0 +1,7 @@
+view market feed:
+  title: 'View market feed'
+  description: 'Read current market prices.'
+import market feed:
+  title: 'Import market prices'
+  description: 'Write market prices through the ingestion API. Reserve for dedicated service accounts.'
+  restrict access: true

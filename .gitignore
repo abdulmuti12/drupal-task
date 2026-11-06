@@ -1,0 +1,13 @@
+/vendor/
+/node_modules/
+/web/sites/*/settings.php
+/web/sites/*/settings.local.php
+/web/sites/*/files/
+/.env
+/.env.*
+!.env.example
+*.log
+/.phpunit.result.cache
+.DS_Store
+/ASSIGNMENT_REFERENCE.pdf
+/CLAUDE_REVIEW_PROMPT.md
