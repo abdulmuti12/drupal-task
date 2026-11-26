@@ -11,3 +11,9 @@
 .DS_Store
 /ASSIGNMENT_REFERENCE.pdf
 /CLAUDE_REVIEW_PROMPT.md
+
+# Drupal runtime extracted locally for XAMPP.
+/web/*
+!/web/modules/
+/web/modules/*
+!/web/modules/custom/

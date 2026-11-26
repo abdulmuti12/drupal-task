@@ -1,0 +1,4 @@
+listing:
+  css:
+    component:
+      css/market-feed.css: {}

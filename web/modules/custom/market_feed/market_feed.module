@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Theme integration for the market prices listing.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function market_feed_theme(): array {
+  return [
+    'market_feed_listing' => [
+      'variables' => [
+        'action' => NULL,
+        'symbol' => '',
+        'invalid_symbol' => FALSE,
+        'rows' => [],
+        'count' => 0,
+        'pager' => [],
+      ],
+    ],
+  ];
+}

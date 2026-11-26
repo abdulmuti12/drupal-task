@@ -52,7 +52,7 @@ final class ImportController implements ContainerInjectionInterface {
     if (strlen($body) > self::MAX_BYTES) {
       return $this->error('JSON payload exceeds 16 MiB.', 413);
     }
-    if (!str_starts_with(ltrim($body), '[')) {
+    if (!str_starts_with(ltrim($body, ' \t\n\r'), '[')) {
       return $this->error('Top-level JSON value must be an array.', 400);
     }
 

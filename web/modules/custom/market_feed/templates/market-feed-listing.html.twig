@@ -1,0 +1,68 @@
+<div class="market-feed">
+  <form class="market-feed__filter" action="{{ action }}" method="get" aria-label="{{ 'Filter market prices'|t }}">
+    <div class="market-feed__field">
+      <label for="market-feed-symbol">{{ 'Filter by symbol'|t }}</label>
+      <input type="search" id="market-feed-symbol" name="symbol" maxlength="20" value="{{ symbol }}" placeholder="{{ 'e.g. AAPL'|t }}" spellcheck="false"{% if invalid_symbol %} aria-invalid="true" aria-describedby="market-feed-error"{% endif %}>
+    </div>
+    <div class="market-feed__actions">
+      <button type="submit">{{ 'Apply filter'|t }}</button>
+      {% if symbol is not empty %}
+        <a href="{{ action }}">{{ 'Clear'|t }}</a>
+      {% endif %}
+    </div>
+    {% if invalid_symbol %}
+      <p class="market-feed__error" id="market-feed-error">{{ 'Enter a symbol of up to 20 characters. Start with a letter or number and use only letters, numbers, periods, underscores or hyphens.'|t }}</p>
+    {% endif %}
+  </form>
+
+  <section class="market-feed__results" aria-labelledby="market-feed-results">
+    <div class="market-feed__heading">
+      <h2 id="market-feed-results">{{ 'Latest prices'|t }}</h2>
+      {% if count > 0 %}
+        <span class="market-feed__count">{% trans %}{{ count }} symbol shown{% plural count %}{{ count }} symbols shown{% endtrans %}</span>
+      {% endif %}
+    </div>
+
+    {% if rows %}
+      <div class="market-feed__scroll" role="region" aria-labelledby="market-feed-results" tabindex="0">
+        <table class="market-feed__table">
+          <thead>
+            <tr>
+              <th scope="col">{{ 'Symbol'|t }}</th>
+              <th scope="col" class="market-feed__number">{{ 'Price'|t }}</th>
+              <th scope="col" class="market-feed__number">{{ 'Change'|t }}</th>
+              <th scope="col" class="market-feed__number">{{ 'Volume'|t }}</th>
+              <th scope="col">{{ 'Updated (UTC)'|t }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+              <tr>
+                <th scope="row">{{ row.symbol }}</th>
+                <td class="market-feed__number">{{ row.price }}</td>
+                <td class="market-feed__number">
+                  <span class="market-feed__change market-feed__change--{{ row.direction }}">{{ row.change }}</span>
+                </td>
+                <td class="market-feed__number">{{ row.volume }}</td>
+                <td>
+                  <time datetime="{{ row.updated_iso }}">{{ row.updated_date }} <span>{{ row.updated_time }}</span></time>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="market-feed__empty">
+        {% if invalid_symbol %}
+          {{ 'Correct the symbol to see matching prices.'|t }}
+        {% elseif symbol is not empty %}
+          {{ 'No prices found for @symbol.'|t({'@symbol': symbol}) }}
+        {% else %}
+          {{ 'No prices are available yet.'|t }}
+        {% endif %}
+      </p>
+    {% endif %}
+  </section>
+  {{ pager }}
+</div>
